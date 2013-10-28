@@ -1,5 +1,6 @@
 // Including libraries
-
+util = require('util');
+util.format('/%d.html', 100);
 var app = require('http').createServer(handler),
 	io = require('socket.io').listen(app),
 	static = require('node-static'); // for serving files

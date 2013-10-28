@@ -1,0 +1,8 @@
+{ "name" : "collaborative_drawing"
+, "version" : "1.0.0"
+, "dependencies" : {
+    "socket.io" : "0.9.16",
+    "node-static" : "0.7.2",
+    "util" : "0.2.0"
+  }
+}
