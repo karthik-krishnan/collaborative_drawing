@@ -7,7 +7,7 @@ $(function(){
 	}
 
 	// The URL of your web server (the port is set in app.js)
-	var url = 'http://localhost:8080';
+	var url = 'http://10.4.32.60:8080';
 
 	var doc = $(document),
 		win = $(window),
@@ -55,12 +55,54 @@ $(function(){
 
 	var prev = {};
 	
+	
+	doc.bind('touchstart',function(e){
+	console.log(e);
+		e.preventDefault();
+		drawing = true;
+		prev.x = e.originalEvent.touches[0].pageX;
+		prev.y = e.originalEvent.touches[0].pageY;
+		//alert(e.originalEvent.touches[0].pageX);	
+		// Hide the instructions
+		instructions.fadeOut();
+	});
+	
+	doc.bind('touchend',function(){
+	
+		drawing = false;
+	});
+	var lastEmit = $.now();
+	
+		doc.bind('touchmove',function(e){
+		
+		if($.now() - lastEmit > 30){
+			socket.emit('touchmove',{
+				'x': e.originalEvent.touches[0].pageX,
+				'y': e.originalEvent.touches[0].pageY,
+				'drawing': drawing,
+				'id': id
+			});
+			lastEmit = $.now();
+		}
+		
+		// Draw a line for the current user's movement, as it is
+		// not received in the socket.on('moving') event above
+		
+		if(drawing){
+			
+			drawLine(prev.x, prev.y, e.originalEvent.touches[0].pageX, e.originalEvent.touches[0].pageY);
+			
+			prev.x = e.originalEvent.touches[0].pageX;
+			prev.y = e.originalEvent.touches[0].pageY;
+		}
+	});
+	
+	
 	canvas.on('mousedown',function(e){
 		e.preventDefault();
 		drawing = true;
 		prev.x = e.pageX;
 		prev.y = e.pageY;
-		
 		// Hide the instructions
 		instructions.fadeOut();
 	});
@@ -69,7 +111,7 @@ $(function(){
 		drawing = false;
 	});
 
-	var lastEmit = $.now();
+	
 
 	doc.on('mousemove',function(e){
 		if($.now() - lastEmit > 30){

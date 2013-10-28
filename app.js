@@ -1,6 +1,6 @@
 // Including libraries
-util = require('util');
-util.format('/%d.html', 100);
+//util = require('util');
+//util.format('/%d.html', 100);
 var app = require('http').createServer(handler),
 	io = require('socket.io').listen(app),
 	static = require('node-static'); // for serving files
@@ -22,7 +22,7 @@ function handler (request, response) {
 		      if (err) {
 		        console.error('Error serving %s - %s', request.url, err.message);
 		        if (err.status === 404 || err.status === 500) {
-		          fileServer.serveFile(util.format('/%d.html', err.status), err.status, {}, request, response);
+		          ;//fileServer.serveFile(util.format('/%d.html', err.status), err.status, {}, request, response);
 		        } else {
 		          response.writeHead(err.status, err.headers);
 		          response.end();
@@ -42,6 +42,13 @@ io.sockets.on('connection', function (socket) {
 
 	// Start listening for mouse move events
 	socket.on('mousemove', function (data) {
+		
+		// This line sends the event (broadcasts it)
+		// to everyone except the originating client.
+		socket.broadcast.emit('moving', data);
+	});
+	
+	socket.on('touchmove', function (data) {
 		
 		// This line sends the event (broadcasts it)
 		// to everyone except the originating client.
