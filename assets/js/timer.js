@@ -1,4 +1,4 @@
-var seconds=100; 
+var seconds=10; 
 var int = window.setInterval("countdown()",1000);
 
       function countdown() 
@@ -9,6 +9,6 @@ var int = window.setInterval("countdown()",1000);
          if (seconds == 0) 
          { 
            window.clearInterval(int);
-           //do what ever you want here
+           alert("Game Over");
          } 
       }
