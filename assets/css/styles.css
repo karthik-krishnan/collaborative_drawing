@@ -88,12 +88,14 @@ h3{
 	background:url('../img/pointer.png') no-repeat -4px 0;
 }
 
-#count {
+#timer {
 	font: 900 36px arial; 
-	text-decoration: underline blink; 
+	text-decoration: blink; 
 	color: sienna; 
 	margin: auto; 
 	text-align: center;
+	background-color : grey;
+	width:200px;
 }
 
 
