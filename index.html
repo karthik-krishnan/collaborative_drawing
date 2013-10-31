@@ -11,13 +11,34 @@
           <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
         
-        <script src = "assets/js/timer.js" type="text/javascript"></script>
-    
-    
+        <!--<script src = "assets/js/timer.js" type="text/javascript"></script>-->
+        <script src="assets/js/countdown.js" type="text/javascript"></script>
+    	
     </head>
     
     <body style="background:url(assets/img/maze.jpg);background-repeat:no-repeat">
-    <div id="count"></div>
+     <div>
+     <p id = "timer">
+     <figure class = "tint">
+    <script type="application/javascript">
+		var myCountdown2 = new Countdown({
+									time: 10, 
+									width:200, 
+									height:80, 
+									rangeHi:"minute",
+									style : "boring",
+									target : "timer",
+									onComplete	: countdownComplete
+									});
+		function countdownComplete(){
+			alert("Game Over!");
+		}
+
+</script> 
+</figure>
+</p>
+</div>
+
     <br /><br />
     
 		<div id="cursors">
