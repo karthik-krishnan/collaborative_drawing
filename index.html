@@ -13,13 +13,24 @@
         
         <!--<script src = "assets/js/timer.js" type="text/javascript"></script>-->
         <script src="assets/js/countdown.js" type="text/javascript"></script>
-    	
+    	   
     </head>
+
     
-    <body style="background:url(assets/img/maze.jpg);background-repeat:no-repeat">
+    <body id='body'>
+<script type="text/javascript">
+   		var images = ['image1.png', 'image2.png', 'image3.png', 'image4.png'];
+   		var dir = 'assets/img/';
+        var randomCount = Math.floor(Math.random() * images.length)
+        //document.getElementById('body').style.backgroundImage = "url(" + dir + images[randomCount] + ")"; 
+        document.getElementById('body').style.backgroundImage = "url(assets/img/maze.jpg)"; 
+        document.getElementById('body').style.backgroundRepeat = "no-repeat"; 
+   </script>
      <div>
+     
      <p id = "timer">
      <figure class = "tint">
+         
     <script type="application/javascript">
 		var myCountdown2 = new Countdown({
 									time: 10, 
