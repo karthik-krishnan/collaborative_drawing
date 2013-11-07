@@ -7,7 +7,7 @@ $(function(){
 	}
 
 	// The URL of your web server (the port is set in app.js)
-	var url = 'http://169.254.197.11:8080';
+	var url = 'http://10.4.32.4:8080';
 
 	var doc = $(document),
 		win = $(window),
@@ -26,6 +26,14 @@ $(function(){
 
 	var socket = io.connect(url);
 	
+	window.onbeforeunload = function () {
+    socket.emit('reload', { my: 'data' });
+    };
+    
+    socket.on('reload', function (data) {
+       window.location.reload(true);
+  });
+	 
 	socket.on('moving', function (data) {
 		
 		if(! (data.id in clients)){
@@ -54,6 +62,7 @@ $(function(){
 	});
 
 	var prev = {};
+	
 	
 	
 	doc.bind('touchstart',function(e){
@@ -108,9 +117,10 @@ $(function(){
 	});
 	
 	doc.bind('mouseup mouseleave',function(){
+
 		drawing = false;
 	});
-
+	
 	
 
 	doc.on('mousemove',function(e){
