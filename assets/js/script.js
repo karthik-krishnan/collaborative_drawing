@@ -48,12 +48,16 @@ $(function(){
 		});
 		
 		// Is the user drawing?
+		
 		if(data.drawing && clients[data.id]){
-			
+			if((clients[data.id].x - data.x) < 20 && (clients[data.id].y - data.y) < 20)
+				drawLine(clients[data.id].x, clients[data.id].y, data.x, data.y);
+			else
+				clients = {};
 			// Draw a line on the canvas. clients[data.id] holds
 			// the previous position of this user's mouse pointer
 			
-			drawLine(clients[data.id].x, clients[data.id].y, data.x, data.y);
+			
 		}
 		
 		// Saving the current client state
@@ -66,6 +70,7 @@ $(function(){
 	
 	
 	doc.bind('touchstart',function(e){
+	
 	console.log(e);
 		e.preventDefault();
 		drawing = true;
@@ -77,7 +82,7 @@ $(function(){
 	});
 	
 	doc.bind('touchend',function(){
-	
+
 		drawing = false;
 	});
 	var lastEmit = $.now();
