@@ -164,8 +164,8 @@ $(function(){
 	},10000);
 
 	function drawLine(fromx, fromy, tox, toy){
-		ctx.moveTo(fromx, fromy);
-		ctx.lineTo(tox, toy);
+		ctx.moveTo(fromx, fromy - 80);
+		ctx.lineTo(tox, toy - 80);
 		ctx.stroke();
 	}
 
