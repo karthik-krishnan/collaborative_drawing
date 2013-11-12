@@ -96,6 +96,16 @@ h3{
 	text-align: center;
 	background-color : grey;
 	width:200px;
+	position: absolute;
+	right: 0px;
+	display: inline;
+	float: top;
+	z-index: 200;
+}
+
+#paper {
+	position: absolute;
+	top: 0px;
 }
 
 

@@ -49,11 +49,14 @@ $(function(){
 		
 		// Is the user drawing?
 		if(data.drawing && clients[data.id]){
-			
+			if((clients[data.id].x - data.x) < 20 && (clients[data.id].y - data.y) < 20)
+				drawLine(clients[data.id].x, clients[data.id].y, data.x, data.y);
+			else
+				clients = {};
 			// Draw a line on the canvas. clients[data.id] holds
 			// the previous position of this user's mouse pointer
 			
-			drawLine(clients[data.id].x, clients[data.id].y, data.x, data.y);
+			
 		}
 		
 		// Saving the current client state
@@ -164,8 +167,9 @@ $(function(){
 	},10000);
 
 	function drawLine(fromx, fromy, tox, toy){
-		ctx.moveTo(fromx, fromy - 80);
-		ctx.lineTo(tox, toy - 80);
+		ctx.moveTo(fromx, fromy);
+		ctx.lineTo(tox, toy);
+		ctx.lineWidth = 7;
 		ctx.stroke();
 	}
 
