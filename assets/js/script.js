@@ -8,7 +8,7 @@ $(function(){
 
 	// The URL of your web server (the port is set in app.js)
 	var url = 'http://10.4.32.4:8080';
-
+	var a;
 	var doc = $(document),
 		win = $(window),
 		canvas = $('#paper'),
@@ -25,15 +25,34 @@ $(function(){
 	var cursors = {};
 
 	var socket = io.connect(url);
-	
 	window.onbeforeunload = function () {
-    socket.emit('reload', { my: 'data' });
-    };
-    
-    socket.on('reload', function (data) {
-       window.location.reload(true);
-  });
-	 
+     socket.emit('reload', { my: 'data' });
+     };
+     
+     socket.on('reload', function (data) {
+        window.location.reload(true);
+   });
+	/*
+	ctx.style.backgroundImage = "url(assets/img/Maze_TV.jpg)"; 
+	window.onbeforeunload = function () {
+	 //alert(imgurl);
+	 a = Math.round($.now()*Math.random()) % 2; 
+	 if(a == 0)
+	 	canvas.style.backgroundImage = "url(assets/img/Maze_TV.jpg)"; 
+	 else
+	 	canvas.style.backgroundImage = "url(assets/img/Game-changer.jpg)"; 
+     socket.emit('reload', { my: a });
+     };
+     
+     socket.on('reload', function (data) {
+      	
+      window.location.reload(true);
+      	 if(data.my == 0)
+	 	canvas.style.backgroundImage = "url(assets/img/Maze_ipad.jpg)"; 
+	 else
+	 	canvas.style.backgroundImage = "url(assets/img/Game-changer-2.jpg)"; 
+   });
+	 */
 	socket.on('moving', function (data) {
 		
 		if(! (data.id in clients)){
