@@ -7,7 +7,7 @@ $(function(){
 	}
 
 	// The URL of your web server (the port is set in app.js)
-	var url = 'http://10.4.32.4:8080';
+	var url = 'http://10.4.33.39:8080';
 	var a;
 	var doc = $(document),
 		win = $(window),
@@ -108,8 +108,8 @@ $(function(){
 		
 		if($.now() - lastEmit > 30){
 			socket.emit('touchmove',{
-				'x': e.originalEvent.touches[0].pageX,
-				'y': e.originalEvent.touches[0].pageY,
+				'x': e.originalEvent.touches[0].pageX * 1.312,
+				'y': e.originalEvent.touches[0].pageY * 1.312,
 				'drawing': drawing,
 				'id': id
 			});

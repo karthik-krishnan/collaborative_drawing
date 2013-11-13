@@ -15,7 +15,7 @@
 
 
 html{
-	background:url('../img/bg.png') repeat #e4e4e4;
+	background:white;
 		
 	/* This will hide the extra canvas if the screen is small */
 	overflow:hidden;
@@ -92,15 +92,15 @@ h3{
 	font: 900 36px arial; 
 	text-decoration: blink; 
 	color: sienna; 
-	margin: auto; 
-	text-align: center;
-	background-color : grey;
+	margin: 0px; 
 	width:200px;
 	position: absolute;
-	right: 0px;
+	right: 75px;
 	display: inline;
 	float: top;
 	z-index: 200;
+	overflow: hidden;
+	padding: 0px;
 }
 
 #paper {
