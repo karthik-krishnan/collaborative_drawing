@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Node.js Multiplayer Drawing Game | Tutorialzine Demo</title>
+        
+        <!-- The stylesheets -->
+        <link rel="stylesheet" href="assets/css/styles.css" />
+        
+        <!--[if lt IE 9]>
+          <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        
+        <!--<script src = "assets/js/timer.js" type="text/javascript"></script>-->
+        <script src="assets/js/countdown.js" type="text/javascript"></script>
+    	   
+    </head>
+
+    
+    <body id='body'>
+<script type="text/javascript">
+   		var images = ['image1.png', 'image2.png', 'image3.png', 'image4.png'];
+   		var dir = 'assets/img/';
+        var randomCount = Math.floor(Math.random() * images.length)
+        //document.getElementById('body').style.backgroundImage = "url(" + dir + images[randomCount] + ")"; 
+        document.getElementById('paper').style.backgroundImage = "url(assets/img/Maze_TV.jpg)"; 
+        document.getElementById('paper').style.backgroundRepeat = "no-repeat";
+        document.getElementById('paper').style.backgroundSize = "contain";
+       
+
+   </script>
+
+     <div>
+     
+     <p id = "timer">
+     <figure class = "tint">
+         
+    <script type="application/javascript">
+		var myCountdown2 = new Countdown({
+									time: 100, 
+									width:200, 
+									height:80, 
+									rangeHi:"minute",
+									style : "boring",
+									target : "timer",
+									onComplete	: countdownComplete
+									});
+		function countdownComplete(){
+			alert("Game Over!");
+		}
+
+</script> 
+</figure>
+</p>
+</div>
+
+    <br /><br />
+    
+		<div id="cursors">
+	    	<!-- The mouse pointers will be created here -->
+		</div>
+
+		<canvas id="paper" width="1075.2" height="806.4" style="background:url(assets/img/Maze_TV.jpg);background-repeat:no-repeat; background-size: contain">
+			Your browser needs to support canvas for this to work!
+		</canvas>
+		
+		<hgroup id="instructions" style="display:none">		
+			<h1>Draw anywhere!</h1>
+			<h2>You will see everyone else who's doing the same.</h2>
+			<h3>Tip: if the stage gets dirty, simply reload the page</h3>
+		</hgroup>
+        
+        <!-- JavaScript includes. Notice that socket.io.js is served by node.js -->
+		<script src="http://localhost:8080/socket.io/socket.io.js"></script>
+		<script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+		<script src="assets/js/script.js"></script>
+    </body>
+</html>
